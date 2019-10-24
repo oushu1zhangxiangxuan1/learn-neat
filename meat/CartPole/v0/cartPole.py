@@ -1,8 +1,16 @@
-import os
-import neat
-import visualize
-import numpy as np
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import init
 import gym
+import numpy as np
+from meat import visualize
+import neat
+import os
+
+init.touch()
+
 
 env = gym.make('CartPole-v0').unwrapped
 max_episode = 10
@@ -22,7 +30,7 @@ def eval_genomes(genomes, config):
         episode_reward = []
         for episode in range(max_episode):
             accumulative_reward = 0
-            observation = env.resst()
+            observation = env.reset()
             for step in range(episode_step):
                 action = np.argmax(net.activate(observation))
                 observation_, reward, done, _ = env.step(action)
@@ -59,15 +67,23 @@ def evoluation():
             s, r, done, _ = env.step(a)
             if done:
                 break
-    node_names = {-1: 'x', -2: 'x_dot', -3: 'theta', -
-                  4: 'theta_dot', 0: 'action1', 1: 'action2'}
+    node_names = {-1: 'x', -2: 'x_dot', -3: 'theta', -4: 'theta_dot', 0: 'action1', 1: 'action2'}
     visualize.draw_net(p.config, winner, view=True, node_names=node_names)
 
 
-if __name__ == '__main__':
+def main():
+
+    local_dir = os.path.dirname(os.path.realpath(__file__))
+    # local_dir = os.path.abspath(os.path.realpath(__file__))
     local_dir = os.path.dirname(__file__)
-    config_path = os.path.join(local_dir, 'config-forward')
+    print(local_dir)
+    config_path = os.path.join(local_dir, 'config_feedforward')
+    print(config_path)
     if is_training is True:
         run(config_path)
     else:
         evoluation()
+
+
+if __name__ == '__main__':
+    main()
