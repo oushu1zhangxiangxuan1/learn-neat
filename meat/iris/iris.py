@@ -45,7 +45,7 @@ def eval_genomes(genomes, config):
             output = net.activate(row.values[:4])
             # 这里需要改用cross entropy when task is classification
             # genome.fitness -= (output[0]-row[4])**2
-            if output[0]!= row.values[4]:
+            if output[0]!= wrow.values[4]:
                 genome.fitness -= 1
 
 
