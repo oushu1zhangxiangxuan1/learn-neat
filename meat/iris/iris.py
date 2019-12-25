@@ -6,27 +6,99 @@ import visualize
 import pandas as pd 
 # import sklearn as 
 
-from sklearn.preprocessing import  OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+from sklearn.preprocessing import LabelEncoder
+
+import numpy as np
+
+# from . import init
 
 
-iris_data = pd.read_csv("/Users/johnsaxon/test/github.com/learn-neat/meat/iris/testdata/iris_train.csv", header=None)
+# from meat.iris.one_hot_test import ZxxEncoder
 
-# print(iris_data.head(5))
-# print(iris_data.columns)
-# print(len(iris_data.columns))
-# print(iris_data.index)
+class ZxxEncoder():
+    def __init__(self, labels):
+        print(labels)
+        assert labels is not None
+        self.le = LabelEncoder()
+        self.le.fit(labels)
+        res = self.le.transform(labels)
+        self.oh = OneHotEncoder()
+        self.oh.fit(np.reshape(res,(-1,1)))
+        self.tmp_out = self.oh.transform(np.reshape(res,(-1,1)))
 
-# print(iris_data[:,1])
+    def transform(self, y):
+        tmp = self.le.transform(y)
+        print(tmp)
+        res = self.oh.transform(np.reshape(tmp, (-1,1))).toarray()
+        print(res)
+        return res
+
+    def inverse_transform_v1(self, y):
+
+        decode_columns = np.vectorize(lambda col: self.oh.active_features_[col])
+        print("decode_columns:")
+        print(decode_columns)
+
+
+        print(np.shape(y))
+        print(np.shape(self.tmp_out))
+
+        decoded = decode_columns(y.indices).reshape(-1,np.shape(self.tmp_out)[-1])
+        print("decoded")
+        print(decoded)
+
+        recovered_y = decoded - self.oh.feature_indices_[:-1]
+
+        res = self.le.inverse_transform(recovered_y)
+        print(res)
+        return res
+
+    def inverse_transform(self, y):
+
+        decode_columns = np.vectorize(lambda col: self.oh.active_features_[col])
+        print("decode_columns:")
+        print(decode_columns)
+
+
+        print(np.shape(y))
+        print(np.shape(self.tmp_out))
+
+        decoded = decode_columns(y.indices).reshape(-1,np.shape(self.tmp_out)[-1])
+        print("decoded")
+        print(decoded)
+
+        recovered_y = decoded - self.oh.feature_indices_[:-1]
+
+        res = self.le.inverse_transform(recovered_y)
+        print(res)
+        return res
+ 
+
+
+def getIrisLabels(iris_data):
+    # print(iris_data.groupby(4).sum())
+    # print(iris_data[4].unique())
+    return iris_data[4].unique()
+
+def showIris(iris_data):
+    print(iris_data.head(5))
+    print(iris_data.columns)
+    print(len(iris_data.columns))
+    print(iris_data.index)
+
+    print(iris_data[:,1])
 
 
 
-# features = pd.DataFrame(iris_data, columns=[0,1,2,3])
-# print(features.head(5))
+    features = pd.DataFrame(iris_data, columns=[0,1,2,3])
+    print(features.head(5))
 
-# # print(features)
+    # print(features)
 
-# labels = pd.DataFrame(iris_data, columns=[4])
-# print(labels.head(5))
+    labels = pd.DataFrame(iris_data, columns=[4])
+    print(labels.head(5))
 
 def traverse_iris():
     for i,row in iris_data.iterrows():
@@ -40,7 +112,7 @@ def traverse_iris():
 
 
 
-def eval_genomes(genomes, config):
+def eval_genomes_v1(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -51,7 +123,7 @@ def eval_genomes(genomes, config):
             if output[0]!= row.values[4]:
                 genome.fitness -= 1
 
-def eval_genomes(genomes, config, encoder):
+def eval_genomes(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -61,8 +133,11 @@ def eval_genomes(genomes, config, encoder):
             # genome.fitness -= (output[0]-row[4])**2
 
             print(output)
+            print(row.values[4])
 
-            encoder.transform(row.values[4])
+            res = zxxEncoder.transform([row.values[4]])
+            print("label: {}".format(row.values[4]))
+            print("after encoding: {}".format(res))
 
             if output[0]!= row.values[4]:
                 genome.fitness -= 1
@@ -142,13 +217,19 @@ def test_run(config_file):
     # p.run(eval_genomes, 10)
 
 
-def LabelEncoder(labels):
-    oh_enc = OneHotEncoder(n_values=labels)
-
 
 
 
 if __name__ == '__main__':
+
+    iris_data = pd.read_csv("/Users/johnsaxon/test/github.com/learn-neat/meat/iris/testdata/iris_train.csv", header=None)
+
+    labels = getIrisLabels(iris_data)
+
+    print("Iris labels: {}".format(labels))
+
+    zxxEncoder = ZxxEncoder(labels)
+
     # traverse_iris()
 
     # Detemin path to configuration file.This path manipulation is
@@ -159,3 +240,5 @@ if __name__ == '__main__':
     # run(config_path)
 
     test_run(config_path)
+
+    # getIrisLabels()
