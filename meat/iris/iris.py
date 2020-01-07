@@ -1,11 +1,14 @@
 from __future__ import print_function
 
 import os 
+import logging
+import logging.handlers
 import neat  
 import visualize 
 import pandas as pd 
 import traceback
 import math
+import argparse
 # import sklearn as 
 
 from sklearn.preprocessing import OneHotEncoder
@@ -15,6 +18,14 @@ from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
 DEBUG = False
+
+logger = logging.getLogger()
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(logging.Formatter(
+    '[%(funcName)s: %(lineno)s ] %(asctime)s %(levelname)s: %(message)s'))
+stream_handler.setLevel(logging.DEBUG)
+logger.addHandler(stream_handler)
 
 # from . import init
 
@@ -84,31 +95,31 @@ class ZxxEncoder():
  
 
 
-def getIrisLabels(iris_data):
-    # print(iris_data.groupby(4).sum())
-    # print(iris_data[4].unique())
-    return iris_data[4].unique()
+def getIrisLabels(train_data):
+    # print(train_data.groupby(4).sum())
+    # print(train_data[4].unique())
+    return train_data[4].unique()
 
-def showIris(iris_data):
-    print(iris_data.head(5))
-    print(iris_data.columns)
-    print(len(iris_data.columns))
-    print(iris_data.index)
+def showIris(train_data):
+    print(train_data.head(5))
+    print(train_data.columns)
+    print(len(train_data.columns))
+    print(train_data.index)
 
-    print(iris_data[:,1])
+    print(train_data[:,1])
 
 
 
-    features = pd.DataFrame(iris_data, columns=[0,1,2,3])
+    features = pd.DataFrame(train_data, columns=[0,1,2,3])
     print(features.head(5))
 
     # print(features)
 
-    labels = pd.DataFrame(iris_data, columns=[4])
+    labels = pd.DataFrame(train_data, columns=[4])
     print(labels.head(5))
 
 def traverse_iris():
-    for i,row in iris_data.iterrows():
+    for i,row in train_data.iterrows():
         if i>10:
             break
         # print(row)
@@ -123,7 +134,7 @@ def eval_genomes_v1(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
-        for i,row in iris_data.iterrows():
+        for i,row in train_data.iterrows():
             output = net.activate(row.values[:4])
             # 这里需要改用cross entropy when task is classification
             # genome.fitness -= (output[0]-row[4])**2
@@ -134,7 +145,7 @@ def eval_genomes(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
-        for i,row in iris_data.iterrows():
+        for i,row in train_data.iterrows():
             output = net.activate(row.values[:4])
             # 这里需要改用cross entropy when task is classification
             # genome.fitness -= (output[0]-row[4])**2
@@ -169,23 +180,23 @@ def run(config_file):
     p = neat.Population(config)
 
     #Add a stdout reporter to show progress in the terninal
-    p.add_reporter(neat.StdOutReporter(True))
+    # p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(5))
+    p.add_reporter(neat.Checkpointer(5, filename_prefix="checkpoint/iris-ck-"))
 
     # Run for up to 300 generations.
     winner = p.run(eval_genomes, GENS)
 
     #Display the winning genome.
-    print('\n Best genome:\n{!s}'.format(winner))
+    # print('\n Best genome:\n{!s}'.format(winner))
 
     # Show output of the most fit genome against training data.
-    print('\nOutput:')
+    # print('\nOutput:')
     winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
-    predictNum = iris_data.shape[0]
+    predictNum = train_data.shape[0]
     predictRight = 0.0
-    for i,row in iris_data.iterrows():
+    for i,row in train_data.iterrows():
         output = winner_net.activate(row.values[:4])
         index = output.index(max(output))
         expect_out = np.ravel(zxxEncoder.transform([row.values[4]]))
@@ -197,8 +208,25 @@ def run(config_file):
         # print('expected index {!r}, got {!r}     expected output {!r}, got {!r}   '.format(
         #     index, expect_index, expect_out, output
         # ))
-    accuracy = predictRight/predictNum
-    print("\nAccuracy: {}".format(accuracy), flush=True)
+    train_accuracy = predictRight/predictNum
+    print("\nTrain accuracy: {}".format(train_accuracy), flush=True)
+
+    predictNum = train_data.shape[0]
+    predictRight = 0.0
+    for i,row in test_data.iterrows():
+        output = winner_net.activate(row.values[:4])
+        index = output.index(max(output))
+        expect_out = np.ravel(zxxEncoder.transform([row.values[4]]))
+        expect_index = expect_out.tolist().index(max(expect_out))
+
+        if index == expect_index:
+            predictRight += 1
+
+        # print('expected index {!r}, got {!r}     expected output {!r}, got {!r}   '.format(
+        #     index, expect_index, expect_out, output
+        # ))
+    test_accuracy = predictRight/predictNum
+    print("\nTest  accuracy: {}".format(test_accuracy), flush=True)
 
     # How does the node_names work?
     node_names = {-1:'A', -2:'B', -3:'C', -4:'D', 0:'label_0', 1:'label_1', 2:'label_2'}
@@ -207,7 +235,7 @@ def run(config_file):
     # p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-4')
     # p.run(eval_genomes, 1)
 
-    return accuracy
+    return train_accuracy, test_accuracy
 
 
 def test_run(config_file):
@@ -233,7 +261,7 @@ def test_run(config_file):
     # # Show output of the most fit genome against training data.
     # print('\nOutput:')
     # winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
-    # for i,row in iris_data.iterrows():
+    # for i,row in train_data.iterrows():
     #     output = winner_net.activate(row.values[:4])
     #     print('input {!r}, expected output {!r}, got {!r}'.format(
     #         row.values[:4], row.values[4], output
@@ -250,8 +278,11 @@ def test_run(config_file):
 def ZxxSoftmax(src):
     assert isinstance(src, list)
     assert len(src)>1
-    denominator = sum([math.e ** i for i in src])
-    return [(math.e ** i)/denominator for i in src]
+    src_max = max(src)
+
+    # TODO: add a sigmoid to aviod OverflowError
+    denominator = sum([math.e ** (i-src_max) for i in src])
+    return [(math.e ** (i-src_max))/denominator for i in src]
 
 def ZxxCrossEntropy(src, target):
     if DEBUG:
@@ -267,10 +298,15 @@ def ZxxCrossEntropy(src, target):
     # assert target.index(1)>0
     try:
         i = target.index(1)
-        loss = -math.log(src[i])
+        loss = -math.log(src[i]+10**-10)
         return loss
     except Exception as e:
-        traceback.format_exc(e)
+        logging.error("src is {}".format(src))
+        logging.error("target is {}".format(target))
+        i = target.index(1)
+        logging.error("i is {}".format(i))
+        logging.error("src[i] is {}".format(src[i]))
+        traceback.format_exc()
         raise e
 
 def MultiMSE(src, target):
@@ -289,9 +325,22 @@ def MultiMSE(src, target):
 
 if __name__ == '__main__':
 
-    iris_data = pd.read_csv("/Users/johnsaxon/test/github.com/learn-neat/meat/iris/testdata/iris_train.csv", header=None)
+    DEBUG = False
+    TEST = True
 
-    labels = getIrisLabels(iris_data)
+    parser = argparse.ArgumentParser()
+    parser.description = "Test neat on iris data."
+    parser.add_argument("--train_data", help="train data file absolute path", type=str)
+    parser.add_argument("--test_data", help="test data file absolute path", type=str)
+    args = parser.parse_args()
+
+    if DEBUG:
+        print("\nargs:{}\n".format(args))
+
+    train_data = pd.read_csv(args.train_data, header=None)
+    test_data = pd.read_csv(args.test_data, header=None)
+
+    labels = getIrisLabels(train_data)
 
     # print("Iris labels: {}".format(labels))
 
@@ -306,10 +355,14 @@ if __name__ == '__main__':
     config_path = os.path.join(local_dir, 'config_feedforward')
     GENS=100
     while True:
-        acc = run(config_path)
-        if acc > 0.85 or GENS > 500:
+        if TEST:
+            GENS=3
+        train_acc, test_acc = run(config_path)
+        if TEST:
             break
-        GENS += 10
+        if (train_acc > 0.9 and test_acc > 0.85)  or GENS > 500:
+            break
+        GENS += 50
 
     # test_run(config_path)
 

@@ -1,0 +1,1 @@
+python ./iris.py --train_data=/Users/johnsaxon/test/github.com/learn-neat/meat/iris/testdata/iris_train.csv --test_data=/Users/johnsaxon/test/github.com/learn-neat/meat/iris/testdata/iris_test.csv 
