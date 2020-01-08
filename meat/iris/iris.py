@@ -189,10 +189,10 @@ def run(config_file):
     winner = p.run(eval_genomes, GENS)
 
     #Display the winning genome.
-    # print('\n Best genome:\n{!s}'.format(winner))
+    print('\n Best genome:\n{!s}'.format(winner))
 
     # Show output of the most fit genome against training data.
-    # print('\nOutput:')
+    print('\nOutput:')
     winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
     predictNum = train_data.shape[0]
     predictRight = 0.0
@@ -211,7 +211,7 @@ def run(config_file):
     train_accuracy = predictRight/predictNum
     print("\nTrain accuracy: {}".format(train_accuracy), flush=True)
 
-    predictNum = train_data.shape[0]
+    predictNum = test_data.shape[0]
     predictRight = 0.0
     for i,row in test_data.iterrows():
         output = winner_net.activate(row.values[:4])
@@ -324,15 +324,15 @@ def MultiMSE(src, target):
 
 
 if __name__ == '__main__':
-
-    DEBUG = False
-    TEST = True
-
     parser = argparse.ArgumentParser()
     parser.description = "Test neat on iris data."
-    parser.add_argument("--train_data", help="train data file absolute path", type=str)
-    parser.add_argument("--test_data", help="test data file absolute path", type=str)
+    parser.add_argument("--train_data", help="train data file absolute path", type=str, default='testdata/iris_train.csv')
+    parser.add_argument("--test_data", help="test data file absolute path", type=str, default='testdata/iris_test.csv')
+    parser.add_argument("--debug", help="train data file absolute path", type=bool, default=False)
+    parser.add_argument("--test", help="test data file absolute path", type=bool, default=False)
     args = parser.parse_args()
+    DEBUG = args.debug
+    TEST  = args.test
 
     if DEBUG:
         print("\nargs:{}\n".format(args))

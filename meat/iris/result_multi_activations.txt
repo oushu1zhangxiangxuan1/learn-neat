@@ -1,0 +1,44 @@
+Saving checkpoint to checkpoint/iris-ck-4
+Saving checkpoint to checkpoint/iris-ck-9
+Saving checkpoint to checkpoint/iris-ck-14
+Saving checkpoint to checkpoint/iris-ck-19
+Saving checkpoint to checkpoint/iris-ck-24
+Saving checkpoint to checkpoint/iris-ck-29
+Saving checkpoint to checkpoint/iris-ck-34
+Saving checkpoint to checkpoint/iris-ck-39
+Saving checkpoint to checkpoint/iris-ck-44
+Saving checkpoint to checkpoint/iris-ck-49
+Saving checkpoint to checkpoint/iris-ck-54
+Saving checkpoint to checkpoint/iris-ck-59
+Saving checkpoint to checkpoint/iris-ck-64
+Saving checkpoint to checkpoint/iris-ck-69
+Saving checkpoint to checkpoint/iris-ck-74
+Saving checkpoint to checkpoint/iris-ck-79
+Saving checkpoint to checkpoint/iris-ck-84
+Saving checkpoint to checkpoint/iris-ck-89
+Saving checkpoint to checkpoint/iris-ck-94
+Saving checkpoint to checkpoint/iris-ck-99
+
+ Best genome:
+Key: 4871
+Fitness: -16.64473780530379
+Nodes:
+	0 DefaultNodeGene(key=0, bias=1.6520350329266376, response=1.0, activation=cube, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=0.07541397023968682, response=1.0, activation=log, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=-1.0093169947891065, response=1.0, activation=inv, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-4, 0), weight=2.7407964044498563, enabled=True)
+	DefaultConnectionGene(key=(-4, 1), weight=3.491621943069751, enabled=True)
+	DefaultConnectionGene(key=(-4, 2), weight=2.3014527569285606, enabled=True)
+	DefaultConnectionGene(key=(-3, 0), weight=-5.114624757869111, enabled=True)
+	DefaultConnectionGene(key=(-3, 1), weight=0.5328637911223582, enabled=True)
+	DefaultConnectionGene(key=(-2, 0), weight=2.7188636557126014, enabled=True)
+	DefaultConnectionGene(key=(-2, 1), weight=-2.5126286957144877, enabled=True)
+	DefaultConnectionGene(key=(-1, 0), weight=3.775695453915999, enabled=False)
+	DefaultConnectionGene(key=(-1, 2), weight=-1.559255515696119, enabled=True)
+
+Output:
+
+Train accuracy: 0.9583333333333334
+
+Test  accuracy: 0.9333333333333333
