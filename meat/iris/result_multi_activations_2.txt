@@ -1,0 +1,50 @@
+Saving checkpoint to checkpoint/iris-ck-4
+Saving checkpoint to checkpoint/iris-ck-9
+Saving checkpoint to checkpoint/iris-ck-14
+Saving checkpoint to checkpoint/iris-ck-19
+Saving checkpoint to checkpoint/iris-ck-24
+Saving checkpoint to checkpoint/iris-ck-29
+Saving checkpoint to checkpoint/iris-ck-34
+Saving checkpoint to checkpoint/iris-ck-39
+Saving checkpoint to checkpoint/iris-ck-44
+Saving checkpoint to checkpoint/iris-ck-49
+Saving checkpoint to checkpoint/iris-ck-54
+Saving checkpoint to checkpoint/iris-ck-59
+Saving checkpoint to checkpoint/iris-ck-64
+Saving checkpoint to checkpoint/iris-ck-69
+Saving checkpoint to checkpoint/iris-ck-74
+Saving checkpoint to checkpoint/iris-ck-79
+Saving checkpoint to checkpoint/iris-ck-84
+Saving checkpoint to checkpoint/iris-ck-89
+Saving checkpoint to checkpoint/iris-ck-94
+Saving checkpoint to checkpoint/iris-ck-99
+
+ Best genome:
+Key: 6980
+Fitness: -5.935159026089742
+Nodes:
+	0 DefaultNodeGene(key=0, bias=-0.8890568979948572, response=1.0, activation=cube, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=-0.3265603293012742, response=1.0, activation=identity, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=-1.1762972014238902, response=1.0, activation=gauss, aggregation=sum)
+	674 DefaultNodeGene(key=674, bias=-2.8552753279082723, response=1.0, activation=tanh, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-4, 0), weight=0.16622927250094227, enabled=True)
+	DefaultConnectionGene(key=(-4, 1), weight=2.4475181418176466, enabled=True)
+	DefaultConnectionGene(key=(-4, 2), weight=1.7506952746405775, enabled=True)
+	DefaultConnectionGene(key=(-4, 674), weight=1.7381386937090904, enabled=True)
+	DefaultConnectionGene(key=(-3, 0), weight=-6.416685714957452, enabled=True)
+	DefaultConnectionGene(key=(-3, 1), weight=4.480946838794473, enabled=True)
+	DefaultConnectionGene(key=(-3, 2), weight=1.574437961469697, enabled=False)
+	DefaultConnectionGene(key=(-2, 0), weight=1.6610423169210193, enabled=True)
+	DefaultConnectionGene(key=(-2, 1), weight=-1.4335174002805, enabled=True)
+	DefaultConnectionGene(key=(-2, 2), weight=0.8391754779494283, enabled=True)
+	DefaultConnectionGene(key=(-1, 0), weight=1.5572583635745672, enabled=True)
+	DefaultConnectionGene(key=(-1, 1), weight=-3.659937076213239, enabled=True)
+	DefaultConnectionGene(key=(-1, 2), weight=-3.5669529002315494, enabled=False)
+	DefaultConnectionGene(key=(674, 1), weight=2.6062384505807024, enabled=True)
+
+Output:
+
+Train accuracy: 0.9666666666666667
+
+Test  accuracy: 0.96

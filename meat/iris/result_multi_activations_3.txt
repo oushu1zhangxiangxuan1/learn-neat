@@ -1,0 +1,194 @@
+Saving checkpoint to checkpoint/iris-ck-4
+Saving checkpoint to checkpoint/iris-ck-9
+Saving checkpoint to checkpoint/iris-ck-14
+Saving checkpoint to checkpoint/iris-ck-19
+Saving checkpoint to checkpoint/iris-ck-24
+Saving checkpoint to checkpoint/iris-ck-29
+Saving checkpoint to checkpoint/iris-ck-34
+Saving checkpoint to checkpoint/iris-ck-39
+Saving checkpoint to checkpoint/iris-ck-44
+Saving checkpoint to checkpoint/iris-ck-49
+Saving checkpoint to checkpoint/iris-ck-54
+Saving checkpoint to checkpoint/iris-ck-56
+Saving checkpoint to checkpoint/iris-ck-61
+Saving checkpoint to checkpoint/iris-ck-66
+Saving checkpoint to checkpoint/iris-ck-71
+Saving checkpoint to checkpoint/iris-ck-76
+Saving checkpoint to checkpoint/iris-ck-81
+Saving checkpoint to checkpoint/iris-ck-86
+Saving checkpoint to checkpoint/iris-ck-91
+Saving checkpoint to checkpoint/iris-ck-96
+
+ Best genome:
+Key: 6265
+Fitness: -5.875033166385827
+Nodes:
+	0 DefaultNodeGene(key=0, bias=1.2664104252230801, response=1.0, activation=identity, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=-4.5339461815258595, response=1.0, activation=cube, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=-0.12300267076556695, response=1.0, activation=hat, aggregation=sum)
+	521 DefaultNodeGene(key=521, bias=-2.2768647203996792, response=1.0, activation=sin, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-4, 0), weight=-2.2809296714974137, enabled=True)
+	DefaultConnectionGene(key=(-4, 1), weight=4.435547034217549, enabled=True)
+	DefaultConnectionGene(key=(-3, 0), weight=-5.873921339988969, enabled=True)
+	DefaultConnectionGene(key=(-3, 1), weight=1.5201383216663662, enabled=True)
+	DefaultConnectionGene(key=(-2, 0), weight=4.447036118906081, enabled=True)
+	DefaultConnectionGene(key=(-2, 1), weight=-3.331884685200424, enabled=True)
+	DefaultConnectionGene(key=(-1, 0), weight=0.9273475921477817, enabled=True)
+	DefaultConnectionGene(key=(-1, 2), weight=-0.84940132860171, enabled=True)
+	DefaultConnectionGene(key=(-1, 521), weight=0.23404066693955144, enabled=True)
+	DefaultConnectionGene(key=(521, 1), weight=-0.7972054459476603, enabled=True)
+	DefaultConnectionGene(key=(521, 2), weight=-1.5081117115998803, enabled=False)
+
+Output:
+
+Train accuracy: 0.975
+
+Test  accuracy: 0.94
+Saving checkpoint to checkpoint/iris-ck-4
+Saving checkpoint to checkpoint/iris-ck-9
+Saving checkpoint to checkpoint/iris-ck-14
+Saving checkpoint to checkpoint/iris-ck-19
+Saving checkpoint to checkpoint/iris-ck-24
+Saving checkpoint to checkpoint/iris-ck-29
+Saving checkpoint to checkpoint/iris-ck-34
+Saving checkpoint to checkpoint/iris-ck-39
+Saving checkpoint to checkpoint/iris-ck-44
+Saving checkpoint to checkpoint/iris-ck-49
+Saving checkpoint to checkpoint/iris-ck-54
+Saving checkpoint to checkpoint/iris-ck-59
+Saving checkpoint to checkpoint/iris-ck-64
+Saving checkpoint to checkpoint/iris-ck-69
+Saving checkpoint to checkpoint/iris-ck-72
+Saving checkpoint to checkpoint/iris-ck-77
+Saving checkpoint to checkpoint/iris-ck-82
+Saving checkpoint to checkpoint/iris-ck-87
+Saving checkpoint to checkpoint/iris-ck-88
+Saving checkpoint to checkpoint/iris-ck-89
+Saving checkpoint to checkpoint/iris-ck-90
+Saving checkpoint to checkpoint/iris-ck-95
+Saving checkpoint to checkpoint/iris-ck-100
+Saving checkpoint to checkpoint/iris-ck-105
+Saving checkpoint to checkpoint/iris-ck-110
+Saving checkpoint to checkpoint/iris-ck-115
+Saving checkpoint to checkpoint/iris-ck-120
+Saving checkpoint to checkpoint/iris-ck-125
+Saving checkpoint to checkpoint/iris-ck-130
+Saving checkpoint to checkpoint/iris-ck-135
+Saving checkpoint to checkpoint/iris-ck-140
+Saving checkpoint to checkpoint/iris-ck-145
+
+ Best genome:
+Key: 9980
+Fitness: -8.057709714318422
+Nodes:
+	0 DefaultNodeGene(key=0, bias=3.935224086055586, response=1.0, activation=cube, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=0.10390627307957126, response=1.0, activation=clamped, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=5.799134758455829, response=1.0, activation=cube, aggregation=sum)
+	41 DefaultNodeGene(key=41, bias=-0.47959091647134267, response=1.0, activation=abs, aggregation=sum)
+	1611 DefaultNodeGene(key=1611, bias=-0.7037860863312427, response=1.0, activation=tanh, aggregation=sum)
+	1927 DefaultNodeGene(key=1927, bias=-0.7961692376296744, response=1.0, activation=tanh, aggregation=sum)
+	1958 DefaultNodeGene(key=1958, bias=0.3318048309532198, response=1.0, activation=tanh, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-4, 0), weight=-1.1829567331677848, enabled=False)
+	DefaultConnectionGene(key=(-4, 1), weight=4.113794475929216, enabled=False)
+	DefaultConnectionGene(key=(-4, 2), weight=-5.409079300480235, enabled=True)
+	DefaultConnectionGene(key=(-4, 41), weight=0.5037134225474991, enabled=True)
+	DefaultConnectionGene(key=(-4, 1611), weight=1.2926558501795495, enabled=True)
+	DefaultConnectionGene(key=(-4, 1958), weight=0.040385008858195404, enabled=True)
+	DefaultConnectionGene(key=(-3, 0), weight=-5.687781778387905, enabled=True)
+	DefaultConnectionGene(key=(-3, 1), weight=-0.6463430666402912, enabled=True)
+	DefaultConnectionGene(key=(-2, 0), weight=3.1622477636597157, enabled=True)
+	DefaultConnectionGene(key=(-2, 1), weight=-0.3837792399411072, enabled=True)
+	DefaultConnectionGene(key=(-2, 2), weight=0.8330942630773792, enabled=True)
+	DefaultConnectionGene(key=(-1, 0), weight=0.9386987156480455, enabled=True)
+	DefaultConnectionGene(key=(-1, 1), weight=-1.9492841188188883, enabled=True)
+	DefaultConnectionGene(key=(41, 0), weight=-0.9566537624691097, enabled=True)
+	DefaultConnectionGene(key=(1611, 1), weight=5.068727480015448, enabled=False)
+	DefaultConnectionGene(key=(1611, 1927), weight=0.7478115921284668, enabled=True)
+	DefaultConnectionGene(key=(1927, 1), weight=4.489808194147778, enabled=True)
+	DefaultConnectionGene(key=(1958, 0), weight=0.6189953397047627, enabled=True)
+
+Output:
+
+Train accuracy: 0.9666666666666667
+
+Test  accuracy: 0.96
+Saving checkpoint to checkpoint/iris-ck-4
+Saving checkpoint to checkpoint/iris-ck-9
+Saving checkpoint to checkpoint/iris-ck-14
+Saving checkpoint to checkpoint/iris-ck-19
+Saving checkpoint to checkpoint/iris-ck-24
+Saving checkpoint to checkpoint/iris-ck-29
+Saving checkpoint to checkpoint/iris-ck-34
+Saving checkpoint to checkpoint/iris-ck-39
+Saving checkpoint to checkpoint/iris-ck-44
+Saving checkpoint to checkpoint/iris-ck-49
+Saving checkpoint to checkpoint/iris-ck-54
+Saving checkpoint to checkpoint/iris-ck-59
+Saving checkpoint to checkpoint/iris-ck-64
+Saving checkpoint to checkpoint/iris-ck-69
+Saving checkpoint to checkpoint/iris-ck-74
+Saving checkpoint to checkpoint/iris-ck-79
+Saving checkpoint to checkpoint/iris-ck-84
+Saving checkpoint to checkpoint/iris-ck-89
+Saving checkpoint to checkpoint/iris-ck-94
+Saving checkpoint to checkpoint/iris-ck-99
+Saving checkpoint to checkpoint/iris-ck-104
+Saving checkpoint to checkpoint/iris-ck-109
+Saving checkpoint to checkpoint/iris-ck-114
+Saving checkpoint to checkpoint/iris-ck-119
+Saving checkpoint to checkpoint/iris-ck-124
+Saving checkpoint to checkpoint/iris-ck-129
+Saving checkpoint to checkpoint/iris-ck-134
+Saving checkpoint to checkpoint/iris-ck-139
+Saving checkpoint to checkpoint/iris-ck-144
+Saving checkpoint to checkpoint/iris-ck-149
+Saving checkpoint to checkpoint/iris-ck-154
+Saving checkpoint to checkpoint/iris-ck-159
+Saving checkpoint to checkpoint/iris-ck-164
+Saving checkpoint to checkpoint/iris-ck-169
+Saving checkpoint to checkpoint/iris-ck-174
+Saving checkpoint to checkpoint/iris-ck-179
+Saving checkpoint to checkpoint/iris-ck-184
+Saving checkpoint to checkpoint/iris-ck-189
+Saving checkpoint to checkpoint/iris-ck-194
+Saving checkpoint to checkpoint/iris-ck-199
+
+ Best genome:
+Key: 10056
+Fitness: -6.406357270602933
+Nodes:
+	0 DefaultNodeGene(key=0, bias=1.2999663819144605, response=1.0, activation=cube, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=-3.3619460358005018, response=1.0, activation=identity, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=1.423770488881195, response=1.0, activation=gauss, aggregation=sum)
+	108 DefaultNodeGene(key=108, bias=1.645509233098811, response=1.0, activation=square, aggregation=sum)
+	973 DefaultNodeGene(key=973, bias=0.6391640705481001, response=1.0, activation=log, aggregation=sum)
+	1641 DefaultNodeGene(key=1641, bias=2.805721301266121, response=1.0, activation=log, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-4, 0), weight=-0.9784025725651189, enabled=True)
+	DefaultConnectionGene(key=(-4, 1), weight=5.832918252279335, enabled=True)
+	DefaultConnectionGene(key=(-4, 108), weight=-1.341719844260136, enabled=True)
+	DefaultConnectionGene(key=(-3, 0), weight=1.5290223830090797, enabled=False)
+	DefaultConnectionGene(key=(-3, 1), weight=3.11990887338627, enabled=True)
+	DefaultConnectionGene(key=(-3, 2), weight=1.487102773539472, enabled=True)
+	DefaultConnectionGene(key=(-3, 108), weight=-1.5615208365801556, enabled=True)
+	DefaultConnectionGene(key=(-3, 1641), weight=-0.9002039501555739, enabled=True)
+	DefaultConnectionGene(key=(-2, 0), weight=3.5026720937760123, enabled=True)
+	DefaultConnectionGene(key=(-2, 1), weight=-2.718296422886184, enabled=True)
+	DefaultConnectionGene(key=(-2, 2), weight=0.030752908172048676, enabled=True)
+	DefaultConnectionGene(key=(-2, 973), weight=0.18011768099967662, enabled=True)
+	DefaultConnectionGene(key=(-1, 0), weight=-0.5378392380282478, enabled=True)
+	DefaultConnectionGene(key=(-1, 1), weight=-2.1712982848393723, enabled=True)
+	DefaultConnectionGene(key=(-1, 2), weight=-1.5778633390367778, enabled=True)
+	DefaultConnectionGene(key=(-1, 973), weight=0.6016393907823332, enabled=True)
+	DefaultConnectionGene(key=(2, 108), weight=0.7739449520906403, enabled=True)
+	DefaultConnectionGene(key=(108, 0), weight=-1.0253076634330087, enabled=True)
+	DefaultConnectionGene(key=(973, 2), weight=0.10258122856459767, enabled=True)
+	DefaultConnectionGene(key=(1641, 2), weight=0.05081452661756765, enabled=True)
+
+Output:
+
+Train accuracy: 0.9833333333333333
+
+Test  accuracy: 0.98

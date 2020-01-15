@@ -360,7 +360,7 @@ if __name__ == '__main__':
         train_acc, test_acc = run(config_path)
         if TEST:
             break
-        if (train_acc > 0.9 and test_acc > 0.85)  or GENS > 500:
+        if (train_acc > 0.975 and test_acc > 0.97)  or GENS > 500:
             break
         GENS += 50
 

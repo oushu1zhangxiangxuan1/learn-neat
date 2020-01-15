@@ -1,0 +1,1 @@
+python ./card.py --train_data=../../testdata/creditcard_fraud/creditcard_fraud_train.csv --test_data=../../testdata/creditcard_fraud/creditcard_fraud_eval.csv
