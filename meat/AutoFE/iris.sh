@@ -1,0 +1,1 @@
+python ./iris.py --train_data=../../testdata/iris_feature_selection/iris_train.csv --test_data=../../testdata/iris_feature_selection/iris_test.csv --test true #--debug true

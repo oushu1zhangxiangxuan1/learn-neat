@@ -114,3 +114,6 @@ venv.bak/
 *.gv
 
 *.html
+
+#out
+*.out
