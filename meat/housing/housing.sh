@@ -1,1 +1,1 @@
-python ./housing.py --train_data=../../testdata/housing/housing_train.csv --test_data=../../testdata/housing/housing_test.csv --test true #--debug true
+python ./housing.py --train_data=../../testdata/housing/housing_test.csv --test_data=../../testdata/housing/housing_test.csv --test true #--debug true
